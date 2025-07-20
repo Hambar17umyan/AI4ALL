@@ -1,0 +1,88 @@
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor Http
+
+@{
+    // Determine current language from our injected header
+    var current = Http.HttpContext.Request.Headers["PageLanguage"].FirstOrDefault() ?? "EN";
+    // Build return URL (path + query)
+    var returnUrl = Context.Request.Path + Context.Request.QueryString;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AI4ALL</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AI4ALL.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/svg+xml" href="~/images/chatbot-icon.svg" />
+
+    <script src="https://kit.fontawesome.com/4b8b0b6e2e.js" crossorigin="anonymous"></script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background: var(--gradient);">
+            <div class="container-fluid">
+                <a class="navbar-brand orbitron" asp-page="/Home/Index">AI4ALL</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainNav" aria-controls="mainNav"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" asp-page="/Home/Index">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-page="/About/Index">About AI4ALL</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-page="/Resources/Index">Resources</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-page="/Chatbot/Index">AI Chatbot</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-page="/Contact/Index">Contact</a></li>
+                    </ul>
+
+                    <button id="themeToggle" class="btn btn-outline-light ms-2" title="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+
+                    <!-- LANGUAGE SWITCHER -->
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link @(current == "EN" ? "active" : "")"
+                               asp-controller="Language"
+                               asp-action="Change"
+                               asp-route-lang="EN"
+                               asp-route-returnUrl="@returnUrl">
+                                EN
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(current == "HY" ? "active" : "")"
+                               asp-controller="Language"
+                               asp-action="Change"
+                               asp-route-lang="HY"
+                               asp-route-returnUrl="@returnUrl">
+                                HY
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="flex-grow-1 pb-3">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/chatbot.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

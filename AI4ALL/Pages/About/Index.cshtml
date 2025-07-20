@@ -1,0 +1,49 @@
+﻿@page
+@model AI4ALL.Pages.About.IndexModel
+@using AI4ALL.Services
+@{
+    var lang = Model.CurrentLanguage;
+    Layout = "_Layout";
+}
+
+<section class="fade-in mb-5">
+    <h1 class="orbitron">@LocalizationService.GetText("AboutTitle", lang)</h1>
+    <p>@LocalizationService.GetText("AboutDescription", lang)</p>
+</section>
+
+<section class="fade-in mb-5">
+    <h2>@LocalizationService.GetText("AboutMissionTitle", lang)</h2>
+    <p>@LocalizationService.GetText("AboutMissionText", lang)</p>
+    <img src="~/images/about-mission.svg" alt="Our mission illustration" class="img-fluid my-3" />
+</section>
+
+<section class="fade-in mb-5">
+    <h2>@LocalizationService.GetText("AboutVisionTitle", lang)</h2>
+    <p>@LocalizationService.GetText("AboutVisionText", lang)</p>
+    <img src="~/images/about-vision.svg" alt="Vision illustration" class="img-fluid my-3" />
+</section>
+
+<section class="fade-in mb-5">
+    <h2>@LocalizationService.GetText("AboutEIFSupportTitle", lang)</h2>
+    <p>@LocalizationService.GetText("AboutEIFSupportText", lang)</p>
+</section>
+
+<section class="fade-in mb-5">
+    <h2>@LocalizationService.GetText("AboutImpactTitle", lang)</h2>
+    <p>@LocalizationService.GetText("AboutImpactText", lang)</p>
+</section>
+
+<section class="fade-in mb-5">
+    <h2>@LocalizationService.GetText("AboutTimelineTitle", lang)</h2>
+    <ul class="timeline">
+        <li>
+            <strong>@LocalizationService.GetText("AboutTimeline2024Title", lang)</strong>
+            <p>@LocalizationService.GetText("AboutTimeline2024Text", lang)</p>
+        </li>
+        <li>
+            <strong>@LocalizationService.GetText("AboutTimeline2025Title", lang)</strong>
+            <p>@LocalizationService.GetText("AboutTimeline2025Text", lang)</p>
+        </li>
+        <!-- Add more timeline items as needed -->
+    </ul>
+</section>

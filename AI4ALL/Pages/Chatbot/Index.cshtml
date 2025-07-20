@@ -1,0 +1,16 @@
+﻿@page
+@model AI4ALL.Pages.Chatbot.IndexModel
+@using AI4ALL.Services
+@{
+    var lang = Model.CurrentLanguage;
+    Layout = "_Layout";
+}
+
+<section class="fade-in">
+    <h1 class="orbitron">@LocalizationService.GetText("ChatbotTitle", lang)</h1>
+    <div id="chatbot-widget"></div>
+</section>
+
+@section Scripts {
+    <script src="~/js/chatbot.js"></script>
+}

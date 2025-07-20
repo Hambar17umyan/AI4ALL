@@ -1,0 +1,44 @@
+﻿@page
+@model AI4ALL.Pages.Contact.IndexModel
+@using AI4ALL.Services
+@{
+    var lang = Model.CurrentLanguage;
+    Layout = "_Layout";
+}
+
+<section class="fade-in">
+    <h1 class="orbitron">@LocalizationService.GetText("ContactTitle", lang)</h1>
+
+    <div id="map" style="height: 300px; border-radius: 8px; margin-bottom: 20px;"></div>
+
+    <p>
+        <strong>@LocalizationService.GetText("ContactEmail", lang):</strong> <a href="mailto:info@eif.am">info@eif.am</a><br />
+        <strong>@LocalizationService.GetText("ContactPhone", lang):</strong> +374 XX XX XX
+    </p>
+
+    <form method="post">
+        <input asp-for="Contact.Name" placeholder="@LocalizationService.GetText("ContactFormName", lang)" required />
+        <input asp-for="Contact.Email" placeholder="@LocalizationService.GetText("ContactFormEmail", lang)" required />
+        <textarea asp-for="Contact.Message" placeholder="@LocalizationService.GetText("ContactFormMessage", lang)" required></textarea>
+        <button type="submit" class="btn btn-gradient">@LocalizationService.GetText("ContactFormSend", lang)</button>
+    </form>
+
+    @if (Model.Success)
+    {
+        <div class="alert alert-success fade-in">@LocalizationService.GetText("ContactFormSuccess", lang)</div>
+    }
+</section>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([40.2031324, 44.5778011], 17); // Example: Yerevan center
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        L.marker([40.2031324, 44.5778011]).addTo(map)
+            .bindPopup('EIF Office')
+            .openPopup();
+    </script>
+}

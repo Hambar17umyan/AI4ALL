@@ -1,0 +1,42 @@
+﻿@page
+@model AI4ALL.Pages.Home.IndexModel
+@using AI4ALL.Services
+@{
+    
+    var lang = Model.CurrentLanguage;
+    
+    Layout = "_Layout";
+}
+
+
+<section class="hero-section animated-gradient">
+    <div class="hero-content fade-in">
+        <h1 class="orbitron">@LocalizationService.GetText("HomeTitle", lang)</h1>
+        <p class="lead">@LocalizationService.GetText("HomeHeroTagline", lang)</p>
+        <a href="/About" class="btn btn-gradient">@LocalizationService.GetText("HomeCta", lang)</a>
+    </div>
+    <img src="~/images/ai-hero.svg" alt="AI concept illustration" class="hero-img floating" />
+</section>
+
+<section class="info-section fade-in delay-1">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>@LocalizationService.GetText("HomeMissionTitle", lang)</h2>
+            <p>@LocalizationService.GetText("HomeMissionText", lang)</p>
+        </div>
+        <div class="col-md-6">
+            <h2>@LocalizationService.GetText("HomeWhyTitle", lang)</h2>
+            <p>@LocalizationService.GetText("HomeWhyText", lang)</p>
+        </div>
+    </div>
+</section>
+
+<section class="news-section fade-in delay-2">
+    <h2>@LocalizationService.GetText("HomeNewsTitle", lang)</h2>
+    <p>@LocalizationService.GetText("HomeNewsText", lang)</p>
+</section>
+
+<section class="eif-section fade-in delay-3">
+    <h2>@LocalizationService.GetText("HomeEIFTitle", lang)</h2>
+    <p>@LocalizationService.GetText("HomeEIFText", lang)</p>
+</section>

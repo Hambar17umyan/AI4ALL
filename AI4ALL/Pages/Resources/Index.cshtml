@@ -1,0 +1,19 @@
+﻿@page
+@model AI4ALL.Pages.Resources.IndexModel
+@using AI4ALL.Services
+@{
+    var lang = Model.CurrentLanguage;
+    Layout = "_Layout";
+}
+
+<section class="fade-in">
+    <h2>@LocalizationService.GetText("ResourcesTitle", lang)</h2>
+    <ul class="resource-list">
+        <li><a href="https://www.linkedin.com/company/ai4allbyeif/">AI4ALL by EIF on LinkedIn</a></li>
+        <li><a href="https://aitc.am/">Armenian-Indian Center for AI (AITC) Resources</a></li>
+        <li><a href="https://fast.ai/">fast.ai: Practical AI Courses (free)</a></li>
+        <li><a href="https://kaggle.com/learn/overview">Kaggle Learn: Free Data Science Micro-courses</a></li>
+        <!-- More coming soon -->
+    </ul>
+    <p class="muted">@LocalizationService.GetText("ResourcesComingSoon", lang)</p>
+</section>
