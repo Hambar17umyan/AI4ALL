@@ -6,44 +6,70 @@
     Layout = "_Layout";
 }
 
-<section class="fade-in mb-5">
-    <h1 class="orbitron">@LocalizationService.GetText("AboutTitle", lang)</h1>
-    <p>@LocalizationService.GetText("AboutDescription", lang)</p>
+<section class="about-hero-section fade-in">
+    <div class="about-hero-content">
+        <h1 class="orbitron">@LocalizationService.GetText("AboutTitle", lang)</h1>
+        <h2 class="about-hero-subtitle">@LocalizationService.GetText("AboutHero", lang)</h2>
+        <p class="lead">@LocalizationService.GetText("AboutDescription", lang)</p>
+    </div>
+    <img src="~/img/ai-hero.png" alt="AI4ALL Hero" class="about-hero-img floating" />
 </section>
 
-<section class="fade-in mb-5">
-    <h2>@LocalizationService.GetText("AboutMissionTitle", lang)</h2>
-    <p>@LocalizationService.GetText("AboutMissionText", lang)</p>
-    <img src="~/images/about-mission.svg" alt="Our mission illustration" class="img-fluid my-3" />
+<section class="about-stats-section fade-in delay-1">
+    <div class="about-stats-card">
+        <img src="~/img/about-stats.png" alt="AI4ALL Stats" />
+        <p>@LocalizationService.GetText("AboutStats", lang)</p>
+    </div>
+    <div class="about-stats-card">
+        <img src="~/img/about-community.png" alt="AI4ALL Community" />
+        <p>@LocalizationService.GetText("AboutCommunity", lang)</p>
+    </div>
+    <div class="about-stats-card">
+        <img src="~/img/about-mentorship.png" alt="AI4ALL Mentorship" />
+        <p>@LocalizationService.GetText("AboutMentorship", lang)</p>
+    </div>
 </section>
 
-<section class="fade-in mb-5">
-    <h2>@LocalizationService.GetText("AboutVisionTitle", lang)</h2>
-    <p>@LocalizationService.GetText("AboutVisionText", lang)</p>
-    <img src="~/images/about-vision.svg" alt="Vision illustration" class="img-fluid my-3" />
+<section class="about-gallery-section fade-in delay-2">
+    <h2>@LocalizationService.GetText("AboutGalleryTitle", lang)</h2>
+    <div class="about-gallery">
+        <img src="~/img/gallery1.jpg" alt="Workshop" />
+        <img src="~/img/gallery2.jpg" alt="Hackathon" />
+        <img src="~/img/gallery3.jpg" alt="Mentorship" />
+        <img src="~/img/gallery4.jpg" alt="Community" />
+    </div>
 </section>
 
-<section class="fade-in mb-5">
-    <h2>@LocalizationService.GetText("AboutEIFSupportTitle", lang)</h2>
-    <p>@LocalizationService.GetText("AboutEIFSupportText", lang)</p>
-</section>
-
-<section class="fade-in mb-5">
-    <h2>@LocalizationService.GetText("AboutImpactTitle", lang)</h2>
-    <p>@LocalizationService.GetText("AboutImpactText", lang)</p>
-</section>
-
-<section class="fade-in mb-5">
+<section class="about-timeline-section fade-in delay-3">
     <h2>@LocalizationService.GetText("AboutTimelineTitle", lang)</h2>
-    <ul class="timeline">
-        <li>
-            <strong>@LocalizationService.GetText("AboutTimeline2024Title", lang)</strong>
-            <p>@LocalizationService.GetText("AboutTimeline2024Text", lang)</p>
-        </li>
-        <li>
-            <strong>@LocalizationService.GetText("AboutTimeline2025Title", lang)</strong>
-            <p>@LocalizationService.GetText("AboutTimeline2025Text", lang)</p>
-        </li>
-        <!-- Add more timeline items as needed -->
-    </ul>
+    <div class="about-timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>2019</h4>
+                <p>@LocalizationService.GetText("About2019", lang)</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>2021</h4>
+                <p>@LocalizationService.GetText("About2021", lang)</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>2023</h4>
+                <p>@LocalizationService.GetText("About2023", lang)</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>2025+</h4>
+                <p>@LocalizationService.GetText("AboutFuture", lang)</p>
+            </div>
+        </div>
+    </div>
 </section>

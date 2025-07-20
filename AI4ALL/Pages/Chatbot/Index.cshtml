@@ -8,9 +8,6 @@
 
 <section class="fade-in">
     <h1 class="orbitron">@LocalizationService.GetText("ChatbotTitle", lang)</h1>
-    <div id="chatbot-widget"></div>
+    <p>@LocalizationService.GetText("ChatBotWelcome", lang)</p>
+    <!-- No chatbot icon or widget markup here! -->
 </section>
-
-@section Scripts {
-    <script src="~/js/chatbot.js"></script>
-}

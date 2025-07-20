@@ -1,11 +1,10 @@
 ﻿@using System.Globalization
 @using Microsoft.AspNetCore.Localization
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor Http
-
+@using AI4ALL.Services
 @{
-    // Determine current language from our injected header
     var current = Http.HttpContext.Request.Headers["PageLanguage"].FirstOrDefault() ?? "EN";
-    // Build return URL (path + query)
+    var lang = Enum.TryParse<PageLanguageType>(current, true, out var l) ? l : PageLanguageType.EN;
     var returnUrl = Context.Request.Path + Context.Request.QueryString;
 }
 
@@ -19,7 +18,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AI4ALL.styles.css" asp-append-version="true" />
-    <link rel="icon" type="image/svg+xml" href="~/images/chatbot-icon.svg" />
+    <link rel="icon" type="image/svg+xml" href="~/img/chatbot-icon.svg" />
 
     <script src="https://kit.fontawesome.com/4b8b0b6e2e.js" crossorigin="anonymous"></script>
 </head>
@@ -36,16 +35,32 @@
 
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" asp-page="/Home/Index">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-page="/About/Index">About AI4ALL</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-page="/Resources/Index">Resources</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-page="/Chatbot/Index">AI Chatbot</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-page="/Contact/Index">Contact</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Home/Index">
+                                @LocalizationService.GetText("HomeNav", lang)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/About/Index">
+                                @LocalizationService.GetText("AboutNav", lang)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Resources/Index">
+                                @LocalizationService.GetText("ResourcesNav", lang)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Chatbot/Index">
+                                @LocalizationService.GetText("ChatbotNav", lang)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Contact/Index">
+                                @LocalizationService.GetText("ContactNav", lang)
+                            </a>
+                        </li>
                     </ul>
-
-                    <button id="themeToggle" class="btn btn-outline-light ms-2" title="Toggle theme">
-                        <i class="fas fa-moon"></i>
-                    </button>
 
                     <!-- LANGUAGE SWITCHER -->
                     <ul class="navbar-nav ms-auto">
